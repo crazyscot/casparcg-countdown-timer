@@ -48,6 +48,20 @@ class App extends React.Component {
                 }
             }
 
+            if (typeof data.f2 !== 'undefined') {
+                partialState.countUp = data.f2;
+            } else if (typeof data.countUp !== 'undefined') {
+                partialState.countUp = data.countUp;
+            }
+            if (partialState.countUp) {
+                // Make sure we are true/false
+                if (typeof partialState.countUp === 'string') {
+                    partialState.countUp = (partialState.countUp.toLowerCase() === 'true' && partialState.countUp.toLowerCase() !== 'false' && !!partialState.countUp);
+                } else {
+                    partialState.countUp = !!partialState.countUp;
+                }
+            }
+
             if (Object.keys(partialState).length) {
                 self.setState(partialState);
             }
@@ -56,7 +70,7 @@ class App extends React.Component {
             if (typeof window.isCasparCG !== 'undefined' && !window.isCasparCG) {
                 // Running in a browser, trigger some default values
                 window.setTimeout(function () {
-                    casparCGHelper.emit('update', {'time': '3:00'});
+                    casparCGHelper.emit('update', {'time': '3:00', 'countUp': true});
                     casparCGHelper.emit('play');
                 }, 500);
             }
@@ -71,7 +85,7 @@ class App extends React.Component {
 
     render() {
         return (
-            <CountdownTimer initialTimeRemaining={this.state.time} visible={this.state.visible} completeCallback={this.onCountdownComplete.bind(this)}/>
+            <CountdownTimer initialTimeRemaining={this.state.time} visible={this.state.visible} completeCallback={this.onCountdownComplete.bind(this)} countUp={this.state.countUp}/>
         );
     }
 }

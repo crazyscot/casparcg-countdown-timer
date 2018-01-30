@@ -38,6 +38,8 @@ Times should be passed through using either the `f0` or `time` key as number of 
 
 By default the template will hide itself at the end of the countdown, you can pass through `0` or `false` to the `f1` or `hideOnEnd` key to keep the template visible.
 
+By default the timer counts down. You can pass through `1` or `true` to the `f2` or `countUp` key to have it count up instead. In this mode it will keep counting forever until you take it offline.
+
 ![](template_settings.png?raw=true)
 
 ## Debugging and Creating a New Theme

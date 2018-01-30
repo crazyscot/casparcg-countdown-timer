@@ -27,6 +27,9 @@ import React from 'react';
 //   - completeCallback(): Function (optional)
 //       A function to call when the countdown completes.
 //
+//   - countUp: Boolean (optional -- default: false)
+//       If set, counts up instead of down.
+//
 class CountdownTimer extends React.Component {
 
     constructor(props) {
@@ -42,7 +45,8 @@ class CountdownTimer extends React.Component {
             timeRemaining: validTimeRemaining ? timeRemaining : 0,
             timeoutId: null,
             prevTime: null,
-            visible: validTimeRemaining && this.props.visible
+            visible: validTimeRemaining && this.props.visible,
+            countUp: this.props.countUp
         };
 
         this.tick = this.tick.bind(this);
@@ -53,7 +57,8 @@ class CountdownTimer extends React.Component {
         interval: React.PropTypes.number,
         formatFunc: React.PropTypes.func,
         tickCallback: React.PropTypes.func,
-        completeCallback: React.PropTypes.func
+        completeCallback: React.PropTypes.func,
+        countUp: React.PropTypes.bool
     };
 
     static defaultProps = {
@@ -62,7 +67,8 @@ class CountdownTimer extends React.Component {
         tickCallback: null,
         completeCallback: null,
         showMinutes: true,
-        showHours: false
+        showHours: false,
+        countUp: false
     };
 
     /**
@@ -107,11 +113,12 @@ class CountdownTimer extends React.Component {
             clearTimeout(this.state.timeoutId);
         }
         let timeRemaining = this.parseTimeString(newProps.initialTimeRemaining);
-        this.setState({prevTime: null, timeRemaining: timeRemaining});
+        this.setState({prevTime: null, timeRemaining: timeRemaining, countUp: newProps.countUp});
     }
 
     componentDidUpdate() {
-        if ((!this.state.prevTime) && this.state.timeRemaining > 0) {
+        if ((!this.state.prevTime) &&
+            (this.state.timeRemaining > 0 || this.state.countUp) ){
             this.tick();
         }
     }
@@ -133,8 +140,11 @@ class CountdownTimer extends React.Component {
             timeout += interval;
         }
 
+        if (this.state.countUp) {
+            dt = 0-dt;
+        }
         let timeRemaining = Math.max(this.state.timeRemaining - dt, 0);
-        let countdownComplete = (this.state.prevTime && timeRemaining <= 0);
+        let countdownComplete = !this.state.countUp || (this.state.prevTime && timeRemaining <= 0);
 
         if (this.state.timeoutId) {
             clearTimeout(this.state.timeoutId);
