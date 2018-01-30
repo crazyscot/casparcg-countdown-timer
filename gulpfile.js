@@ -125,7 +125,9 @@ gulp.task('compile-scripts', function () {
         entries: files,
         //extensions: ['.jsx'],
         debug: true,
-        transform: babelify.configure(),
+        transform: [
+            ["babelify", {presets:["es2015","react","stage-0"]}],
+        ],
         cache: {},
         packageCache: {},
         fullPaths: true
