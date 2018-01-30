@@ -19,9 +19,7 @@ class App extends React.Component {
         let casparCGHelper = new CasparCGHelper();
         casparCGHelper.on('play', function () {
             self.setState({visible: true});
-            console.log('play on');
             if (typeof play_hook === 'function') { play_hook(); }
-            else { console.log('no hook'); }
         });
         casparCGHelper.on('stop', function () {
             self.setState({visible: false});
