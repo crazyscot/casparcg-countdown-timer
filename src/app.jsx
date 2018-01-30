@@ -112,10 +112,9 @@ ReactDOM.render(
 );
 
 function play_hook() {
-    setTimeout(animateOn, 40); // needed for CSS font load
-}
-function animateOn() {
-    TimelineMax.to("#countdown", 0.5, {css:{height: "5vh"}});
+    setTimeout(function() {
+        TimelineMax.to("#countdown", 0.5, {css:{height: "5vh"}});
+    }, 40); // needed for CSS font load
 }
 function update_hook() {
 }
