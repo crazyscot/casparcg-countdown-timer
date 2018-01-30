@@ -197,12 +197,12 @@ class CountdownTimer extends React.Component {
     render() {
         let style = {};
         if (!this.props.visible) {
-            style.display = 'none';
+            //style.display = 'none'; // Handled by stop_hook.
         }
         return (
-            <span className="timer" style={style}>
+            <span className="timer" style={style}>&nbsp;
                 {this.getFormattedTime(this.state.timeRemaining)}
-            </span>
+            &nbsp;</span>
         );
     }
 }
