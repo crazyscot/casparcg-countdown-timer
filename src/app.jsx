@@ -114,10 +114,10 @@ function play_hook() {
     setTimeout(animateOn, 40); // needed for CSS font load
 }
 function animateOn() {
-    TimelineMax.to("#countdown", 1, {css:{height: "5vh"}});
+    TimelineMax.to("#countdown", 0.5, {css:{height: "5vh"}});
 }
 function update_hook() {
 }
 function stop_hook() {
-    TimelineMax.to("#countdown", 1, {css:{height: "0vh"}});
+    TimelineMax.to("#countdown", 0.5, {css:{height: "0vh"}});
 }
