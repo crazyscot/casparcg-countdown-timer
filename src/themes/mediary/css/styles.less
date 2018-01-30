@@ -1,0 +1,48 @@
+/*
+START Main configuration values
+*/
+
+@padding-size: 20px;
+
+/*
+END Main configuration values
+*/
+
+body {
+    -webkit-font-smoothing:antialiased !important;
+}
+@font-face {
+    font-family: Poppins-Bold;
+    src: url('../fonts/Poppins-Bold.ttf');
+}
+
+// give us a background colour when we aren't running in CasparCG
+body.not-casparcg {
+  background: black;
+}
+
+.hide {
+  visibility: hidden;
+}
+
+#countdown .timer {
+  font-family: Poppins-Bold;
+  font-size: 3vh;
+  background: #777;
+  color: #fff;
+  position: absolute;
+  top: 12vh;
+  left: 8vw;
+  /* width to be auto sized? */
+  height: 5vh; /* to be 0px for anim-on */
+  z-index: 10;
+  padding: 0.5vh 1vw;
+}
+
+.vertical-align {
+  display: block;
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+}

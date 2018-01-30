@@ -23,7 +23,7 @@ var sourcePath = './src';
 var destPath = './casparcg_output';
 var themeBasePath = sourcePath + '/themes';
 /** @var {string} The name of the theme to build for */
-var themeName = 'base';
+var themeName = 'mediary';
 var themePath = themeBasePath + '/' + themeName;
 var cssPath = destPath + '/css';
 var cssFile = 'main.css';
