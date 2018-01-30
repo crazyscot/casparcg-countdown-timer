@@ -22,8 +22,10 @@
     "gulp-sourcemaps": "^1.6.0",
     "gulp-util": "^3.0.7",
     "gulp-watch": "^4.3.5",
-    "path": "^0.12.7",
     "jsonfile": "^2.2.3",
+    "path": "^0.12.7",
+    "uglify-js": "^3.3.9",
+    "uglifyify": "^4.0.5",
     "vinyl-source-stream": "^1.1.0",
     "watchify": "^3.7.0"
   },

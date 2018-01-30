@@ -17,6 +17,7 @@ var newer = require('gulp-newer');
 var watchify = require('watchify');
 var jsonfile = require('jsonfile');
 var envify = require('envify/custom');
+var uglifyify = require('uglifyify');
 
 var sourcePath = './src';
 var destPath = './casparcg_output';
@@ -135,6 +136,7 @@ gulp.task('compile-scripts', function () {
     };
     var b = browserify(props);
     b.transform({global:true},envify({ NODE_ENV: 'production' }));
+    b.transform('uglifyify', {global:true});
     var bundler = watchify(b);
     var jsFilePath = destPath + '/js';
     var jsFileName = 'main.js';
