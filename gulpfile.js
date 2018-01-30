@@ -36,6 +36,7 @@ function handleBuildErrors() {
     var args = Array.prototype.slice.call(arguments);
     displayConsoleError('Error compiling!');
     displayConsoleError(args.toString());
+    console.log(args[0].stack);
     this.emit('end');
 }
 
