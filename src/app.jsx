@@ -19,9 +19,13 @@ class App extends React.Component {
         let casparCGHelper = new CasparCGHelper();
         casparCGHelper.on('play', function () {
             self.setState({visible: true});
+            console.log('play on');
+            if (typeof play_hook === 'function') { play_hook(); }
+            else { console.log('no hook'); }
         });
         casparCGHelper.on('stop', function () {
             self.setState({visible: false});
+            if (typeof stop_hook === 'function') { stop_hook(); }
         });
         casparCGHelper.on('update', function (data) {
             let partialState = {};
@@ -66,6 +70,8 @@ class App extends React.Component {
             if (Object.keys(partialState).length) {
                 self.setState(partialState);
             }
+
+            if (typeof update_hook === 'function') { update_hook(); }
         });
         if (!CasparCGHelper.isCasgparCG(true)) {
             if (typeof window.isCasparCG !== 'undefined' && !window.isCasparCG) {
@@ -103,3 +109,15 @@ ReactDOM.render(
     <App />,
     document.getElementById('countdown')
 );
+
+function play_hook() {
+    setTimeout(animateOn, 40); // needed for CSS font load
+}
+function animateOn() {
+    TimelineMax.to("#countdown", 1, {css:{height: "5vh"}});
+}
+function update_hook() {
+}
+function stop_hook() {
+    TimelineMax.to("#countdown", 1, {css:{height: "0vh"}});
+}
