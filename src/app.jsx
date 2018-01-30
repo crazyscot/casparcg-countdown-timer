@@ -22,8 +22,11 @@ class App extends React.Component {
             if (typeof play_hook === 'function') { play_hook(); }
         });
         casparCGHelper.on('stop', function () {
-            self.setState({visible: false});
             if (typeof stop_hook === 'function') { stop_hook(); }
+            setTimeout( function() {
+                self.setState({visible: false});
+            } , 500);
+
         });
         casparCGHelper.on('update', function (data) {
             let partialState = {};
