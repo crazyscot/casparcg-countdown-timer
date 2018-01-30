@@ -70,9 +70,17 @@ class App extends React.Component {
             if (typeof window.isCasparCG !== 'undefined' && !window.isCasparCG) {
                 // Running in a browser, trigger some default values
                 window.setTimeout(function () {
-                    casparCGHelper.emit('update', {'time': '3:00', 'countUp': true});
+                    casparCGHelper.emit('update', {
+                        'time': '3:00',
+                        'hideOnEnd': false,
+                        'countUp': true});
                     casparCGHelper.emit('play');
                 }, 500);
+                // Test the stop animation too:
+                window.setTimeout(function () {
+                    casparCGHelper.emit('stop');
+                }, 5000);
+
             }
         }
     }
