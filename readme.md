@@ -11,7 +11,7 @@ countdown_timer
 1. Run gulp to list available comments
 	- `gulp`
 1. Run gulp build the build using the provided theme
-    - `gulp build --theme "base"`
+    - `gulp build --theme mediary`
 
 ## Folder structure
 
