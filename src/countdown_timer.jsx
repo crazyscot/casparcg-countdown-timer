@@ -143,8 +143,9 @@ class CountdownTimer extends React.Component {
         if (this.state.countUp) {
             dt = 0-dt;
         }
-        let timeRemaining = Math.max(this.state.timeRemaining - dt, 0);
-        let countdownComplete = !this.state.countUp && (this.state.prevTime && timeRemaining <= 0);
+        let rawTimeRemaining = this.state.timeRemaining - dt;
+        let timeRemaining = Math.max(rawTimeRemaining, 0);
+        let countdownComplete = !this.state.countUp && (this.state.prevTime && rawTimeRemaining <= -1);
 
         if (this.state.timeoutId) {
             clearTimeout(this.state.timeoutId);
