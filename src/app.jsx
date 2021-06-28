@@ -95,7 +95,7 @@ class App extends React.Component {
 
     onCountdownComplete() {
         if (this.state.hideOnEnd) {
-            this.setState({visible: false});
+            stop_hook();
         }
     }
 
