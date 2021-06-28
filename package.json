@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "description": "Countdown Timer Overlay for use in CasparCG",
   "private": true,
-  "author": "Blair McMillan (blair@mcmillan.id.au)",
+  "author": "Blair McMillan <blair@mcmillan.id.au>",
+  "contributor": "Ross Younger <ross@mediary.nz>",
   "devDependencies": {
     "babel-preset-es2015": "^6.3.13",
     "babel-preset-react": "^6.3.13",
