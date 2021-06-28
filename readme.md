@@ -40,6 +40,8 @@ By default the template will hide itself at the end of the countdown, you can pa
 
 By default the timer counts down. You can pass through `1` or `true` to the `f2` or `countUp` key to have it count up instead. In this mode it will keep counting forever until you take it offline.
 
+When counting up, in "MM:SS" format the time keeps on counting indefinitely. After 99:59 you get 100:00. The background automatically resizes but is not animated. If you want to see hours, use "HH:MM:SS" format.
+
 ![](template_settings.png?raw=true)
 
 ## Debugging and Creating a New Theme

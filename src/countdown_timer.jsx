@@ -176,19 +176,23 @@ class CountdownTimer extends React.Component {
 
         let seconds = parseInt(totalSeconds % 60, 10);
         let minutes = parseInt(totalSeconds / 60, 10) % 60;
+        let allMinutes = parseInt(totalSeconds / 60, 10);
         let hours = parseInt(totalSeconds / 3600, 10);
 
         seconds = seconds < 10 ? '0' + seconds : seconds;
         minutes = minutes < 10 ? '0' + minutes : minutes;
+        allMinutes = allMinutes < 10 ? '0' + allMinutes : allMinutes;
         hours = hours < 10 ? '0' + hours : hours;
 
         let response = '';
         if (this.showHours) {
-            response += hours + ':';
+            response += hours + ':' + minutes + ':';
+        } else {
+            if (this.showMinutes) {
+                response += allMinutes + ':';
+            }
         }
-        if (this.showHours || this.showMinutes) {
-            response += minutes + ':';
-        }
+
         response += seconds;
 
         return response;
